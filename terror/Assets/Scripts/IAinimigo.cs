@@ -1,26 +1,30 @@
 using UnityEngine;
-using UnityEngine.AI;
 
 public class IAinimigo : MonoBehaviour
 {
-    public Transform target;
-    private NavMeshAgent agent;
+    public Transform player; // Referência ao jogador
+    public float speed = 5f; // Velocidade de movimento do monstro
+    private bool isChasing = false; // Flag para saber se está perseguindo
 
-    void Start()
+    private void Update()
     {
-        agent = GetComponent<NavMeshAgent>();
-
-        if (target != null)
+        if (isChasing)
         {
-            agent.SetDestination(target.position);
+            // Calcular a direção para o jogador
+            Vector3 direction = (player.position - transform.position).normalized;
+            // Mover o monstro em direção ao jogador
+            transform.position += direction * speed * Time.deltaTime;
+            // Opcional: Rotacionar o monstro para olhar para o jogador
+            transform.LookAt(player);
         }
     }
 
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        if (agent.remainingDistance > agent.stoppingDistance)
+        // Verificar se o objeto que entrou no trigger é o jogador
+        if (other.CompareTag("Player"))
         {
-            agent.SetDestination(target.position);
+            isChasing = true;
         }
     }
 }

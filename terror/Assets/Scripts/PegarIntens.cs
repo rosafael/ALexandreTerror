@@ -2,41 +2,43 @@ using UnityEngine;
 
 public class PegarIntens : MonoBehaviour
 {
-    public float rayDistance = 5f; // Distância do Raycast
-    public KeyCode interactionKey = KeyCode.E; // Tecla de interação
-    public GameObject objetoParaHabilitarChaveDeFenda; // Objeto a ser habilitado quando encontrar a ChaveDeFenda
-    public GameObject objetoParaHabilitarChaveDaEscada; // Objeto a ser habilitado quando encontrar a ChaveDaEscada
+    public float raycastDistance = 2f; // Distância do raycast
+    public GameObject objetoParaHabilitarChaveCasa; // Objeto para habilitar quando a chave for coletada
+    public GameObject objetoParaHabilitarPeDeCabra; // Objeto para habilitar quando o pé de cabra for coletado
 
     void Update()
     {
-        // Verifica se a tecla de interação foi pressionada
-        if (Input.GetKeyDown(interactionKey))
+        // Verifica se a tecla E foi pressionada
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            // Lança o Raycast a partir da posição da câmera do jogador para frente
-            Ray ray = new Ray(transform.position, transform.forward);
+            // Lança o raycast a partir da posição da câmera
+            Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
             RaycastHit hit;
 
-            // Verifica se o Raycast colidiu com algum objeto
-            if (Physics.Raycast(ray, out hit, rayDistance))
+            if (Physics.Raycast(ray, out hit, raycastDistance))
             {
-                // Verifica se o objeto colidido tem a tag "ChaveDeFenda"
-                if (hit.collider.CompareTag("ChaveDeFenda"))
+                // Verifica se o objeto atingido possui a tag "ChaveCasa"
+                if (hit.collider.CompareTag("ChaveCasa"))
                 {
-                    // Habilita o objeto associado e destrói o objeto com a tag "ChaveDeFenda"
-                    if (objetoParaHabilitarChaveDeFenda != null)
+                    // Habilita o objeto desejado para a chave
+                    if (objetoParaHabilitarChaveCasa != null)
                     {
-                        objetoParaHabilitarChaveDeFenda.SetActive(true);
+                        objetoParaHabilitarChaveCasa.SetActive(true);
                     }
+
+                    // Destrói o objeto com a tag "ChaveCasa"
                     Destroy(hit.collider.gameObject);
                 }
-                // Verifica se o objeto colidido tem a tag "ChaveDaEscada"
-                else if (hit.collider.CompareTag("ChaveDaEscada"))
+                // Verifica se o objeto atingido possui a tag "PeDeCabra"
+                else if (hit.collider.CompareTag("PeDeCabra"))
                 {
-                    // Habilita o objeto associado e destrói o objeto com a tag "ChaveDaEscada"
-                    if (objetoParaHabilitarChaveDaEscada != null)
+                    // Habilita o objeto desejado para o pé de cabra
+                    if (objetoParaHabilitarPeDeCabra != null)
                     {
-                        objetoParaHabilitarChaveDaEscada.SetActive(true);
+                        objetoParaHabilitarPeDeCabra.SetActive(true);
                     }
+
+                    // Destrói o objeto com a tag "PeDeCabra"
                     Destroy(hit.collider.gameObject);
                 }
             }

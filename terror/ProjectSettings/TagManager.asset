@@ -11,6 +11,15 @@ TagManager:
   - ChaveDeFenda
   - ChaveDaEscada
   - DoorEscada
+  - Item
+  - ChaveCasa
+  - Pneu
+  - Carro
+  - Pneu1
+  - Pneu2
+  - Pneu3
+  - PeDeCabra
+  - DoorCabra
   layers:
   - Default
   - TransparentFX
