@@ -20,11 +20,12 @@ TagManager:
   - Pneu3
   - PeDeCabra
   - DoorCabra
+  - Cabra
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Filtro
   - Water
   - UI
   - 

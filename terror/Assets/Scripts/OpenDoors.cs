@@ -4,7 +4,6 @@ public class OpenDoors : MonoBehaviour
 {
     public float rayDistance = 5f; 
     public KeyCode interactionKey = KeyCode.E; 
-    public GameObject PeDeCabra; 
     public GameObject chaveDaEscada;
 
     void Update()
@@ -19,12 +18,6 @@ public class OpenDoors : MonoBehaviour
                 if (hit.collider.CompareTag("Door"))
                 {
                     // Destrói o objeto
-                    Destroy(hit.collider.gameObject);
-                }
-                else if (hit.collider.CompareTag("DoorCabra") && PeDeCabra != null && PeDeCabra.activeInHierarchy)
-                {
-                    Destroy(PeDeCabra);
-
                     Destroy(hit.collider.gameObject);
                 }
                 else if (hit.collider.CompareTag("DoorEscada") && chaveDaEscada != null && chaveDaEscada.activeInHierarchy)

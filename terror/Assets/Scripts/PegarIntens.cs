@@ -30,7 +30,7 @@ public class PegarIntens : MonoBehaviour
                     Destroy(hit.collider.gameObject);
                 }
                 // Verifica se o objeto atingido possui a tag "PeDeCabra"
-                else if (hit.collider.CompareTag("PeDeCabra"))
+                else if (hit.collider.CompareTag("Machado"))
                 {
                     // Habilita o objeto desejado para o pé de cabra
                     if (objetoParaHabilitarPeDeCabra != null)
