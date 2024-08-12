@@ -7,6 +7,12 @@ public class ItensCarro : MonoBehaviour
     public GameObject objetoParaHabilitarPneu1; // Objeto para habilitar quando o Pneu1 for coletado
     public GameObject objetoParaHabilitarPneu2; // Objeto para habilitar quando o Pneu2 for coletado
     public GameObject objetoParaHabilitarPneu3; // Objeto para habilitar quando o Pneu3 for coletado
+    public GameObject ChaveDeFenda;
+    public GameObject Motor;
+    public GameObject Filtro;
+    public GameObject Turbo;
+    public GameObject ChaveCarro;
+
 
     void Update()
     {
@@ -62,6 +68,61 @@ public class ItensCarro : MonoBehaviour
                     if (objetoParaHabilitarPneu3 != null)
                     {
                         objetoParaHabilitarPneu3.SetActive(true);
+                    }
+
+                    // Destrói o objeto com a tag "Pneu3"
+                    Destroy(hit.collider.gameObject);
+                }
+                else if (hit.collider.CompareTag("ChaveDeFenda"))
+                {
+                    // Habilita o objeto desejado para Pneu3
+                    if (ChaveDeFenda != null)
+                    {
+                        ChaveDeFenda.SetActive(true);
+                    }
+
+                    // Destrói o objeto com a tag "Pneu3"
+                    Destroy(hit.collider.gameObject);
+                }
+                else if (hit.collider.CompareTag("Motor"))
+                {
+                    // Habilita o objeto desejado para Pneu3
+                    if (Motor != null)
+                    {
+                        Motor.SetActive(true);
+                    }
+
+                    // Destrói o objeto com a tag "Pneu3"
+                    Destroy(hit.collider.gameObject);
+                }
+                else if (hit.collider.CompareTag("Filtro"))
+                {
+                    // Habilita o objeto desejado para Pneu3
+                    if (Filtro != null)
+                    {
+                        Filtro.SetActive(true);
+                    }
+
+                    // Destrói o objeto com a tag "Pneu3"
+                    Destroy(hit.collider.gameObject);
+                }
+                else if (hit.collider.CompareTag("Turbo"))
+                {
+                    // Habilita o objeto desejado para Pneu3
+                    if (Turbo != null)
+                    {
+                        Turbo.SetActive(true);
+                    }
+
+                    // Destrói o objeto com a tag "Pneu3"
+                    Destroy(hit.collider.gameObject);
+                }
+                else if (hit.collider.CompareTag("ChaveCarro"))
+                {
+                    // Habilita o objeto desejado para Pneu3
+                    if (ChaveCarro != null)
+                    {
+                        ChaveCarro.SetActive(true);
                     }
 
                     // Destrói o objeto com a tag "Pneu3"

@@ -3,9 +3,9 @@ using UnityEngine;
 public class Carro : MonoBehaviour
 {
     // Listas para lidar com múltiplos pneus em ordem
-    public GameObject[] objetosParaVerificarPneus; // Objetos que precisam estar habilitados
-    public GameObject[] objetosParaHabilitarPneus; // Objetos que serão habilitados ao interagir
-    public GameObject[] objetosParaDestruirPneus; // Objetos que serão destruídos ao interagir
+    public GameObject[] objetosParaVerificar; // Objetos que precisam estar habilitados
+    public GameObject[] objetosParaHabilitars; // Objetos que serão habilitados ao interagir
+    public GameObject[] objetosParaDestruir; // Objetos que serão destruídos ao interagir
     public float raycastDistance = 23f; // Distância do raycast
 
     void Update()
@@ -23,21 +23,21 @@ public class Carro : MonoBehaviour
                 if (hit.collider.CompareTag("Carro"))
                 {
                     // Itera sobre cada conjunto de pneus em ordem
-                    for (int i = 0; i < objetosParaVerificarPneus.Length; i++)
+                    for (int i = 0; i < objetosParaVerificar.Length; i++)
                     {
                         // Verifica se o objeto de verificação atual está habilitado
-                        if (objetosParaVerificarPneus[i] != null && objetosParaVerificarPneus[i].activeInHierarchy)
+                        if (objetosParaVerificar[i] != null && objetosParaVerificar[i].activeInHierarchy)
                         {
                             // Habilita o objeto correspondente
-                            if (objetosParaHabilitarPneus[i] != null)
+                            if (objetosParaHabilitars[i] != null)
                             {
-                                objetosParaHabilitarPneus[i].SetActive(true);
+                                objetosParaHabilitars[i].SetActive(true);
                             }
 
                             // Destrói o objeto correspondente
-                            if (objetosParaDestruirPneus[i] != null)
+                            if (objetosParaDestruir[i] != null)
                             {
-                                Destroy(objetosParaDestruirPneus[i]);
+                                Destroy(objetosParaDestruir[i]);
                             }
 
                             // Sai do loop após encontrar o primeiro pneu habilitado

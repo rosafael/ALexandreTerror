@@ -21,6 +21,12 @@ TagManager:
   - PeDeCabra
   - DoorCabra
   - Cabra
+  - Machado
+  - Tree
+  - Motor
+  - Filtro
+  - Turbo
+  - ChaveCarro
   layers:
   - Default
   - TransparentFX
