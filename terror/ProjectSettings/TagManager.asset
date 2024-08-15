@@ -27,6 +27,7 @@ TagManager:
   - Filtro
   - Turbo
   - ChaveCarro
+  - Susto
   layers:
   - Default
   - TransparentFX
