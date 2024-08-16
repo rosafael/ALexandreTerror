@@ -45,6 +45,11 @@ public class ChaveCarro : MonoBehaviour
     {
         if (!string.IsNullOrEmpty(nomeDaCenaParaCarregar))
         {
+            // Habilita o cursor do mouse e o deixa livre
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+
+            // Carrega a nova cena
             SceneManager.LoadScene(nomeDaCenaParaCarregar);
         }
     }

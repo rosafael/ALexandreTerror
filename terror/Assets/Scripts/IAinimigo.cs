@@ -1,9 +1,7 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
-using UnityEngine.UI;  // Para o uso do TextMesh
 
 public enum MonsterAI
 {
@@ -11,12 +9,14 @@ public enum MonsterAI
 }
 
 [RequireComponent(typeof(NavMeshAgent))]
+[RequireComponent(typeof(Animator))]
 public class IAinimigo : MonoBehaviour
 {
     public Transform[] patrolPoint;
     public UnityEvent OnPatrolling, OnChasing, OnBreak;
 
     NavMeshAgent agent;
+    Animator animator;  // Referência ao Animator
 
     [Header("Radius")]
     [SerializeField] float SetRadius;
@@ -32,20 +32,42 @@ public class IAinimigo : MonoBehaviour
     int lastPoint;
     int pointsToPatrol;
 
-    [Header("Timer")]
-    public float countdownTime = 20f; // 3 minutos
-    public TextMesh countdownText;
+    [Header("Timer Settings")]
+    public float countdownTime = 60f; // Tempo inicial de 1 minuto
+    private bool speedIncreased = false;
 
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();  // Inicializa o Animator
         OnPatrolling.Invoke();
-        StartCoroutine(StartCountdown());
     }
 
     private void Update()
     {
+        // Decrementar o cronômetro
+        if (countdownTime > 0)
+        {
+            countdownTime -= Time.deltaTime;
+        }
+        else if (!speedIncreased)
+        {
+            // Aumentar a velocidade do NavMeshAgent após o cronômetro expirar
+            agent.speed = 4.5f;
+            speedIncreased = true;
+        }
+
         print(monsterAI);
+
+        // Atualiza a animação com base na velocidade do agente
+        if (agent.velocity.magnitude > 0.1f)
+        {
+            animator.SetBool("isWalking", true);  // Ativa a animação de andar
+        }
+        else
+        {
+            animator.SetBool("isWalking", false);  // Ativa a animação de parado
+        }
 
         if (Physics.Linecast(vision.position, playerPos.position, out hit))
         {
@@ -116,25 +138,5 @@ public class IAinimigo : MonoBehaviour
                 OnChasing.Invoke();
                 break;
         }
-    }
-
-    IEnumerator StartCountdown()
-    {
-        while (countdownTime > 0)
-        {
-            countdownTime -= Time.deltaTime;
-            UpdateCountdownDisplay();
-            yield return null;
-        }
-
-        // Quando o tempo acabar, aumentar a velocidade do NavMeshAgent
-        agent.speed = 4.5f;
-    }
-
-    void UpdateCountdownDisplay()
-    {
-        int minutes = Mathf.FloorToInt(countdownTime / 60);
-        int seconds = Mathf.FloorToInt(countdownTime % 60);
-        countdownText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 }

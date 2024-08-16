@@ -265,6 +265,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4040233495056261168}
+  - component: {fileID: 698750866}
   m_Layer: 0
   m_Name: Armature
   m_TagString: Untagged
@@ -288,6 +289,19 @@ Transform:
   m_Father: {fileID: 4040233495056261244}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &698750866
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4040233495055907856}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 25, y: 23, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4040233495055907858
 GameObject:
   m_ObjectHideFlags: 0
@@ -332,9 +346,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4040233495056261172}
   - component: {fileID: 4040233495059083536}
+  - component: {fileID: 197196540}
   m_Layer: 0
   m_Name: clown
-  m_TagString: Untagged
+  m_TagString: Morreu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -441,6 +456,20 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.003888771, y: 0.11532107, z: 0.005267352}
     m_Extent: {x: 0.2669189, y: 1.0219042, z: 0.9468907}
   m_DirtyAABB: 0
+--- !u!136 &197196540
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4040233495055907860}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 1.0219042
+  m_Height: 2.0438087
+  m_Direction: 1
+  m_Center: {x: -0.021269202, y: -0.004467488, z: 0.8822592}
 --- !u!1 &4040233495055907862
 GameObject:
   m_ObjectHideFlags: 0
@@ -897,7 +926,6 @@ GameObject:
   - component: {fileID: 4040233495056261244}
   - component: {fileID: 4040233494847277217}
   - component: {fileID: 4040233494847277216}
-  - component: {fileID: 4040233494847277219}
   m_Layer: 0
   m_Name: true_clown
   m_TagString: Untagged
@@ -934,8 +962,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8fa8c80e2c0f714eb65978117553781, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  speed: 2
+  patrolPoint: []
+  OnPatrolling:
+    m_PersistentCalls:
+      m_Calls: []
+  OnChasing:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBreak:
+    m_PersistentCalls:
+      m_Calls: []
+  SetRadius: 25
+  playerPos: {fileID: 0}
+  vision: {fileID: 4040233495056261168}
+  CanPatrol: 0
+  countdownTime: 60
 --- !u!195 &4040233494847277216
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -958,19 +999,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!65 &4040233494847277219
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4040233495055907932}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 11, y: 1, z: 11}
-  m_Center: {x: 0, y: 1, z: 1}
 --- !u!1 &4040233495055907934
 GameObject:
   m_ObjectHideFlags: 0

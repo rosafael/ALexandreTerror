@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Winner.unity
     guid: 0039172f0ae445640bbd5bc954469353
+  - enabled: 1
+    path: Assets/Scenes/Morreu.unity
+    guid: 95a23f8552136cd43a233027556bb8e3
   m_configObjects: {}
